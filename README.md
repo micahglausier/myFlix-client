@@ -5,7 +5,7 @@ Added Build Tool Parcel
 <br>
 Points to src/index.html
 <br>
-Terminal Command: `parcel src/index.html`
+Terminal Command: `npx parcel src/index.html`
 
  <h2>API Documentation</h2>
         <table>
