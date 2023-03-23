@@ -27179,9 +27179,9 @@ const MainView = ()=>{
                 return {
                     id: movie._id,
                     title: movie.Title,
-                    director: movie.Director_Name,
+                    director: movie.Director.Name,
                     description: movie.Description,
-                    genre: movie.genre_name
+                    genre: movie.Genre.Name
                 };
             });
             setMovies(moviesFromApi);
@@ -28276,7 +28276,7 @@ const LoginView = ({ onLoggedIn  })=>{
             Username: username,
             Password: password
         };
-        fetch("https://myflix-micah.herokuapp.com//login", {
+        fetch("https://myflix-micah.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -28378,7 +28378,7 @@ const MovieView = ({ movie , onBackClick  })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image,
+                    src: movie.imagepath,
                     width: "300",
                     height: "450"
                 }, void 0, false, {
