@@ -27163,60 +27163,31 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         fetch("https://myflix-micah.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            if (data.docs) {
-                const moviesFromApi = data.docs.map((doc)=>{
-                    return {
-                        id: doc.key,
-                        title: doc.title,
-                        author: doc.director_name?.[0]
-                    };
-                });
-                setMovies(moviesFromApi);
-            }
+            const moviesFromApi = data.map((movie)=>{
+                return {
+                    id: movie._id,
+                    title: movie.Title,
+                    director: movie.Director_Name,
+                    description: movie.Description,
+                    genre: movie.genre_name
+                };
+            });
+            setMovies(moviesFromApi);
         });
-    }, []);
-    // useEffect(() => {
-    //   fetch("https://myflix-micah.herokuapp.com/movies")
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       const moviesFromApi = data.docs.map((doc) => {
-    //         return {
-    //           id: doc.key,
-    //           title: doc.title,
-    //           author: doc.director_name?.[0]
-    //         };
-    //       });
-    //       setMovies(moviesFromApi);
-    //     });
-    // }, []);
-    // useEffect(() => {
-    //   fetch("https://myflix-micah.herokuapp.com/movies")
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       const moviesFromApi = data.docs.map((doc) => {
-    //         return {
-    //           id: doc.key,
-    //           title: doc.title,
-    //           image: doc.image,
-    //           author: doc.director?.[0]
-    //         };
-    //       });
-    //       setBooks(booksFromApi);
-    //     });
-    // }, []);
+    });
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 64,
+        lineNumber: 32,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 69,
+        lineNumber: 37,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27227,12 +27198,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 75,
+                lineNumber: 43,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 73,
+        lineNumber: 41,
         columnNumber: 5
     }, undefined);
 };
@@ -27275,7 +27246,9 @@ _c = MovieCard;
 //here is where we define all the props constraints for the MovieCard
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string.isRequired
+        title: (0, _propTypesDefault.default).string.isRequired,
+        image: (0, _propTypesDefault.default).string.isRequired,
+        director: (0, _propTypesDefault.default).string
     }).isRequired,
     onBookClick: (0, _propTypesDefault.default).func.isRequired
 };
