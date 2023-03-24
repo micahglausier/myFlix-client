@@ -27179,6 +27179,7 @@ const MainView = ()=>{
                 return {
                     id: movie._id,
                     title: movie.Title,
+                    image: movie.ImagePath,
                     director: movie.Director.Name,
                     description: movie.Description,
                     genre: movie.Genre.Name
@@ -27198,13 +27199,13 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 44,
+                lineNumber: 45,
                 columnNumber: 11
             }, undefined),
             "or",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 49,
+                lineNumber: 50,
                 columnNumber: 11
             }, undefined)
         ]
@@ -27220,7 +27221,7 @@ const MainView = ()=>{
                 children: " Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 58,
+                lineNumber: 59,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27228,7 +27229,7 @@ const MainView = ()=>{
                 onBackClick: ()=>setSelectedMovie(null)
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 62,
+                lineNumber: 63,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27244,14 +27245,14 @@ const MainView = ()=>{
                 children: " Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 70,
+                lineNumber: 71,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: "The list is empty!"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 74,
+                lineNumber: 75,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27267,7 +27268,7 @@ const MainView = ()=>{
                 children: " Logout"
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 81,
+                lineNumber: 82,
                 columnNumber: 7
             }, undefined),
             movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
@@ -27277,13 +27278,13 @@ const MainView = ()=>{
                     }
                 }, movie._id, false, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 87,
+                    lineNumber: 88,
                     columnNumber: 9
                 }, undefined))
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 80,
+        lineNumber: 81,
         columnNumber: 5
     }, undefined);
 };
@@ -28378,7 +28379,7 @@ const MovieView = ({ movie , onBackClick  })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.imagepath,
+                    src: movie.image,
                     width: "300",
                     height: "450"
                 }, void 0, false, {
