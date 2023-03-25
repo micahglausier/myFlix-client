@@ -42,27 +42,32 @@ export const LoginView = ({ onLoggedIn }) => {
   return (
     // handleSubmit is the callback of onSubmit, tells the login API to validate user and password
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formUsername" className="form"  style={{ width: '20rem'}}>
-        <Form.Label class="form-label">Username:</Form.Label>
+      <h3 style={{ display: 'flex',  justifyContent:'center', alignItems:'center', color: '#FBC403', fontSize: "20px", marginBottom: '-10px', marginTop: '30px' }}>Login:</h3>
+      <Form.Group controlId="formUsername" className="form"  style={{ display: 'flex',  justifyContent:'center', alignItems:'center' }}>
+        <Form.Label class="form-label">Username:&nbsp;</Form.Label>
         <Form.Control
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
           minLength="3"
+          style={{ backgroundColor: "whitesmoke", border: '2px solid #F34C19'}}
           />
       </Form.Group>
       
-      <Form.Group controlId="formPassword" className="form" style={{ width: '20rem'}}>
-        <Form.Label>Password:</Form.Label>
+      <Form.Group controlId="formPassword" className="form" style={{ display: 'flex',  justifyContent:'center', alignItems:'center' }}>
+        <Form.Label>Password:&nbsp;</Form.Label>
         <Form.Control
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          style={{ backgroundColor: "whitesmoke", border: '2px solid #F34C19'}}
           />
       </Form.Group>
+      <div style={{ display: 'flex',  justifyContent:'center', alignItems:'center', marginTop: '10px' }}>
       <Button variant="primary" type="submit" className="form-button">Submit</Button>
+      </div>
     </Form>
   );
 }; 

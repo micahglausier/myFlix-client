@@ -4,14 +4,16 @@ import './movie-card.scss';
 
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
-    <Card className="movie-card" style={{ width: '20rem', cursor: "pointer" }} onClick={() => onMovieClick(movie)}>
-      <Card.Img className="card-image" variant="top" src={movie.image} />
+    <Card className="movie-card" style={{ cursor: "pointer", marginTop: '10px', border: '2px solid black' }} onClick={() => onMovieClick(movie)}>
+      <Card.Img className="card-image" variant="top" src={movie.image} width="300" height="450" />
       <Card.Body>
-        <Card.Title>{movie.title}</Card.Title>
-        <Card.Text>{movie.director}</Card.Text>
-        <Button onClick={() => onMovieClick(movie)} variant='primary' className="open-button" style={{ cursor: "pointer"  }}>
+        <Card.Title style={{ display: 'flex',  justifyContent:'center', alignItems:'center', fontSize: '21px'}}>{movie.title}</Card.Title>
+        <Card.Text style={{ display: 'flex',  justifyContent:'center', alignItems:'center' }}>{movie.director}</Card.Text>
+        <div style={{ display: 'flex',  justifyContent:'center', alignItems:'center' }}>
+        <Button onClick={() => onMovieClick(movie)} variant='primary' className="open-button" style={{ cursor: "pointer", border: '1px solid black'  }}>
           Open
         </Button>
+        </div>
       </Card.Body>
     </Card>
   );
