@@ -69,11 +69,11 @@ export const MainView = () => {
               justifyContent: "center",
               alignItems: "center",
               marginTop: "30px",
+              marginBottom: "30px"
             }}
           >
             <h3 style={{ 
               fontSize: "40px",
-              border: '2px solid',
               width: '100px',
               textAlign: 'center',
               }}
@@ -146,7 +146,8 @@ export const MainView = () => {
               justifyContent: "center",
               alignItems: "center",
               fontSize: "60px",
-              color: '#F34C19'
+              color: '#F34C19',
+              textShadow: '1px 1px black'
             }}
           >
             myFlix

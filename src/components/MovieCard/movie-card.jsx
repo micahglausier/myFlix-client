@@ -13,7 +13,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
       }}
       onClick={() => onMovieClick(movie)}
     >
-      <Card.Title
+      {/* <Card.Title
         style={{
           display: "flex",
           justifyContent: "center",
@@ -23,7 +23,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         }}
       >
         {movie.title}
-      </Card.Title>
+      </Card.Title> */}
       <Card.Img
         className="card-image"
         variant="top"
@@ -53,7 +53,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
             onClick={() => onMovieClick(movie)}
             variant="primary"
             className="open-button"
-            style={{ cursor: "pointer", border: "1px solid black", height: '50px', width: '100px' }}
+            style={{ cursor: "pointer", border: "1px solid black", height: '50px', width: '100px', boxShadow: "1px 1px 1px 1px black" }}
           >
             Open
           </Button>

@@ -2940,7 +2940,9 @@ const MyFlixApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
         style: {
             border: "1px solid #F34C19",
-            marginTop: "20px"
+            marginTop: "20px",
+            backgroundColor: "#343F71",
+            boxShadow: "5px 5px 5px 5px black"
         },
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
@@ -27251,19 +27253,19 @@ const MainView = ()=>{
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        marginTop: "30px"
+                        marginTop: "30px",
+                        marginBottom: "30px"
                     },
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                         style: {
                             fontSize: "40px",
-                            border: "2px solid",
                             width: "100px",
                             textAlign: "center"
                         },
                         children: "or"
                     }, void 0, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 74,
+                        lineNumber: 75,
                         columnNumber: 13
                     }, undefined)
                 }, void 0, false, {
@@ -27399,7 +27401,8 @@ const MainView = ()=>{
                         justifyContent: "center",
                         alignItems: "center",
                         fontSize: "60px",
-                        color: "#F34C19"
+                        color: "#F34C19",
+                        textShadow: "1px 1px black"
                     },
                     children: "myFlix"
                 }, void 0, false, {
@@ -27416,12 +27419,12 @@ const MainView = ()=>{
                             }
                         }, void 0, false, {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 156,
+                            lineNumber: 157,
                             columnNumber: 15
                         }, undefined)
                     }, movie._id, false, {
                         fileName: "src/components/MainView/main-view.jsx",
-                        lineNumber: 155,
+                        lineNumber: 156,
                         columnNumber: 13
                     }, undefined))
             ]
@@ -27518,20 +27521,6 @@ const MovieCard = ({ movie , onMovieClick  })=>{
         },
         onClick: ()=>onMovieClick(movie),
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
-                style: {
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontSize: "20px",
-                    color: "#343F71"
-                },
-                children: movie.title
-            }, void 0, false, {
-                fileName: "src/components/MovieCard/movie-card.jsx",
-                lineNumber: 16,
-                columnNumber: 7
-            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                 className: "card-image",
                 variant: "top",
@@ -27575,7 +27564,8 @@ const MovieCard = ({ movie , onMovieClick  })=>{
                                 cursor: "pointer",
                                 border: "1px solid black",
                                 height: "50px",
-                                width: "100px"
+                                width: "100px",
+                                boxShadow: "1px 1px 1px 1px black"
                             },
                             children: "Open"
                         }, void 0, false, {
@@ -41511,114 +41501,124 @@ const LoginView = ({ onLoggedIn  })=>{
     return(// handleSubmit is the callback of onSubmit, tells the login API to validate user and password
     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
         onSubmit: handleSubmit,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                style: {
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    color: "#FBC403",
-                    fontSize: "30px",
-                    marginBottom: "-10px",
-                    marginTop: "30px"
-                },
-                children: "Login:"
-            }, void 0, false, {
-                fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 45,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formUsername",
-                className: "form",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        class: "form-label",
-                        children: "Username:\xa0"
-                    }, void 0, false, {
-                        fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 62,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value),
-                        required: true,
-                        minLength: "3",
-                        style: {
-                            backgroundColor: "whitesmoke",
-                            border: "2px solid #F34C19"
-                        }
-                    }, void 0, false, {
-                        fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 63,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 58,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formPassword",
-                className: "form",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        class: "form-label",
-                        children: "Password:\xa0"
-                    }, void 0, false, {
-                        fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 77,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value),
-                        required: true,
-                        style: {
-                            backgroundColor: "whitesmoke",
-                            border: "2px solid #F34C19"
-                        }
-                    }, void 0, false, {
-                        fileName: "src/components/LoginView/login-view.jsx",
-                        lineNumber: 78,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 73,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                style: {
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: "20px"
-                },
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                    variant: "primary",
-                    type: "submit",
-                    className: "form-button",
-                    children: "Submit"
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            style: {
+                border: "2px solid #E9D8E4",
+                padding: "10px"
+            },
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                    style: {
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        color: "#FBC403",
+                        fontSize: "30px",
+                        marginBottom: "-10px",
+                        marginTop: "30px"
+                    },
+                    children: "Login:"
                 }, void 0, false, {
                     fileName: "src/components/LoginView/login-view.jsx",
-                    lineNumber: 94,
-                    columnNumber: 9
+                    lineNumber: 47,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                    controlId: "formUsername",
+                    className: "form",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                            class: "form-label",
+                            children: "Username:\xa0"
+                        }, void 0, false, {
+                            fileName: "src/components/LoginView/login-view.jsx",
+                            lineNumber: 65,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                            type: "text",
+                            value: username,
+                            onChange: (e)=>setUsername(e.target.value),
+                            required: true,
+                            minLength: "3",
+                            style: {
+                                backgroundColor: "whitesmoke",
+                                border: "2px solid #F34C19"
+                            }
+                        }, void 0, false, {
+                            fileName: "src/components/LoginView/login-view.jsx",
+                            lineNumber: 66,
+                            columnNumber: 9
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/LoginView/login-view.jsx",
+                    lineNumber: 61,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                    controlId: "formPassword",
+                    className: "form",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                            class: "form-label",
+                            children: "Password:\xa0"
+                        }, void 0, false, {
+                            fileName: "src/components/LoginView/login-view.jsx",
+                            lineNumber: 80,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                            type: "password",
+                            value: password,
+                            onChange: (e)=>setPassword(e.target.value),
+                            required: true,
+                            style: {
+                                backgroundColor: "whitesmoke",
+                                border: "2px solid #F34C19"
+                            }
+                        }, void 0, false, {
+                            fileName: "src/components/LoginView/login-view.jsx",
+                            lineNumber: 81,
+                            columnNumber: 9
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/LoginView/login-view.jsx",
+                    lineNumber: 76,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    style: {
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginTop: "20px"
+                    },
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                        variant: "primary",
+                        type: "submit",
+                        className: "form-button",
+                        children: "Submit"
+                    }, void 0, false, {
+                        fileName: "src/components/LoginView/login-view.jsx",
+                        lineNumber: 97,
+                        columnNumber: 9
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/LoginView/login-view.jsx",
+                    lineNumber: 89,
+                    columnNumber: 7
                 }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/LoginView/login-view.jsx",
-                lineNumber: 86,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
+            ]
+        }, void 0, true, {
+            fileName: "src/components/LoginView/login-view.jsx",
+            lineNumber: 46,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
         fileName: "src/components/LoginView/login-view.jsx",
-        lineNumber: 44,
+        lineNumber: 45,
         columnNumber: 5
     }, undefined));
 };
@@ -41687,7 +41687,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                     width: "400",
                     height: "550",
                     style: {
-                        boxShadow: "5px 5px black"
+                        boxShadow: "5px 5px 5px 5px black"
                     }
                 }, void 0, false, {
                     fileName: "src/components/MovieView/movie-view.jsx",
@@ -41874,7 +41874,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                         backgroundColor: "#FBC403",
                         color: "#343F71",
                         border: "1px solid black",
-                        boxShadow: ".5px .5px black"
+                        boxShadow: "1px 1px 1px 1px black"
                     },
                     children: "Back"
                 }, void 0, false, {
@@ -41952,172 +41952,182 @@ const SignupView = ()=>{
         style: {
             textAlign: "left"
         },
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                style: {
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    color: "#FBC403",
-                    fontSize: "30px",
-                    marginBottom: "-10px",
-                    marginTop: "30px"
-                },
-                children: "Sign-Up:"
-            }, void 0, false, {
-                fileName: "src/components/SignUpView/signup-view.jsx",
-                lineNumber: 39,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formUsername",
-                className: "form",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Username:\xa0"
-                    }, void 0, false, {
-                        fileName: "src/components/SignUpView/signup-view.jsx",
-                        lineNumber: 53,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value),
-                        required: true,
-                        minLength: "3",
-                        style: {
-                            backgroundColor: "whitesmoke",
-                            border: "2px solid #F34C19"
-                        }
-                    }, void 0, false, {
-                        fileName: "src/components/SignUpView/signup-view.jsx",
-                        lineNumber: 54,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/SignUpView/signup-view.jsx",
-                lineNumber: 52,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formPassword",
-                className: "form",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Password:\xa0"
-                    }, void 0, false, {
-                        fileName: "src/components/SignUpView/signup-view.jsx",
-                        lineNumber: 64,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value),
-                        required: true,
-                        style: {
-                            backgroundColor: "whitesmoke",
-                            border: "2px solid #F34C19"
-                        }
-                    }, void 0, false, {
-                        fileName: "src/components/SignUpView/signup-view.jsx",
-                        lineNumber: 65,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/SignUpView/signup-view.jsx",
-                lineNumber: 63,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formEmail",
-                className: "form",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Email:\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0"
-                    }, void 0, false, {
-                        fileName: "src/components/SignUpView/signup-view.jsx",
-                        lineNumber: 74,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "email",
-                        value: email,
-                        onChange: (e)=>setEmail(e.target.value),
-                        required: true,
-                        style: {
-                            backgroundColor: "whitesmoke",
-                            border: "2px solid #F34C19"
-                        }
-                    }, void 0, false, {
-                        fileName: "src/components/SignUpView/signup-view.jsx",
-                        lineNumber: 77,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/SignUpView/signup-view.jsx",
-                lineNumber: 73,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
-                controlId: "formBirthday",
-                className: "form",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Birthday:\xa0\xa0"
-                    }, void 0, false, {
-                        fileName: "src/components/SignUpView/signup-view.jsx",
-                        lineNumber: 86,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                        type: "date",
-                        value: birthday,
-                        onChange: (e)=>setBirthday(e.target.value),
-                        required: true,
-                        style: {
-                            backgroundColor: "whitesmoke",
-                            border: "2px solid #F34C19"
-                        }
-                    }, void 0, false, {
-                        fileName: "src/components/SignUpView/signup-view.jsx",
-                        lineNumber: 87,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/SignUpView/signup-view.jsx",
-                lineNumber: 85,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                style: {
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: "20px"
-                },
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                    variant: "primary",
-                    type: "submit",
-                    className: "form-button",
-                    children: "Submit"
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            style: {
+                border: "2px solid #E9D8E4",
+                padding: "10px"
+            },
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                    style: {
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        color: "#FBC403",
+                        fontSize: "30px",
+                        marginBottom: "-10px",
+                        marginTop: "30px"
+                    },
+                    children: "Sign-Up:"
                 }, void 0, false, {
                     fileName: "src/components/SignUpView/signup-view.jsx",
-                    lineNumber: 103,
-                    columnNumber: 9
+                    lineNumber: 40,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                    controlId: "formUsername",
+                    className: "form",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                            children: "Username:\xa0"
+                        }, void 0, false, {
+                            fileName: "src/components/SignUpView/signup-view.jsx",
+                            lineNumber: 54,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                            type: "text",
+                            value: username,
+                            onChange: (e)=>setUsername(e.target.value),
+                            required: true,
+                            minLength: "3",
+                            style: {
+                                backgroundColor: "whitesmoke",
+                                border: "2px solid #F34C19"
+                            }
+                        }, void 0, false, {
+                            fileName: "src/components/SignUpView/signup-view.jsx",
+                            lineNumber: 55,
+                            columnNumber: 9
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/SignUpView/signup-view.jsx",
+                    lineNumber: 53,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                    controlId: "formPassword",
+                    className: "form",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                            children: "Password:\xa0"
+                        }, void 0, false, {
+                            fileName: "src/components/SignUpView/signup-view.jsx",
+                            lineNumber: 65,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                            type: "password",
+                            value: password,
+                            onChange: (e)=>setPassword(e.target.value),
+                            required: true,
+                            style: {
+                                backgroundColor: "whitesmoke",
+                                border: "2px solid #F34C19"
+                            }
+                        }, void 0, false, {
+                            fileName: "src/components/SignUpView/signup-view.jsx",
+                            lineNumber: 66,
+                            columnNumber: 9
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/SignUpView/signup-view.jsx",
+                    lineNumber: 64,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                    controlId: "formEmail",
+                    className: "form",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                            children: "Email:\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0"
+                        }, void 0, false, {
+                            fileName: "src/components/SignUpView/signup-view.jsx",
+                            lineNumber: 75,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                            type: "email",
+                            value: email,
+                            onChange: (e)=>setEmail(e.target.value),
+                            required: true,
+                            style: {
+                                backgroundColor: "whitesmoke",
+                                border: "2px solid #F34C19"
+                            }
+                        }, void 0, false, {
+                            fileName: "src/components/SignUpView/signup-view.jsx",
+                            lineNumber: 78,
+                            columnNumber: 9
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/SignUpView/signup-view.jsx",
+                    lineNumber: 74,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
+                    controlId: "formBirthday",
+                    className: "form",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
+                            children: "Birthday:\xa0\xa0"
+                        }, void 0, false, {
+                            fileName: "src/components/SignUpView/signup-view.jsx",
+                            lineNumber: 87,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                            type: "date",
+                            value: birthday,
+                            onChange: (e)=>setBirthday(e.target.value),
+                            required: true,
+                            style: {
+                                backgroundColor: "whitesmoke",
+                                border: "2px solid #F34C19"
+                            }
+                        }, void 0, false, {
+                            fileName: "src/components/SignUpView/signup-view.jsx",
+                            lineNumber: 88,
+                            columnNumber: 9
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/SignUpView/signup-view.jsx",
+                    lineNumber: 86,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    style: {
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginTop: "20px"
+                    },
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                        variant: "primary",
+                        type: "submit",
+                        className: "form-button",
+                        children: "Submit"
+                    }, void 0, false, {
+                        fileName: "src/components/SignUpView/signup-view.jsx",
+                        lineNumber: 104,
+                        columnNumber: 9
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/SignUpView/signup-view.jsx",
+                    lineNumber: 96,
+                    columnNumber: 7
                 }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/SignUpView/signup-view.jsx",
-                lineNumber: 95,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
+            ]
+        }, void 0, true, {
+            fileName: "src/components/SignUpView/signup-view.jsx",
+            lineNumber: 39,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false, {
         fileName: "src/components/SignUpView/signup-view.jsx",
         lineNumber: 38,
         columnNumber: 5

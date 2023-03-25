@@ -36,6 +36,7 @@ export const SignupView = () => {
 
   return (
     <Form onSubmit={handleSubmit} style={{ textAlign: "left" }}>
+    <div style={{border: "2px solid #E9D8E4", padding: "10px"}}>
       <h3
         style={{
           display: "flex",
@@ -103,6 +104,7 @@ export const SignupView = () => {
         <Button variant="primary" type="submit" className="form-button">
           Submit
         </Button>
+      </div>
       </div>
     </Form>
   );

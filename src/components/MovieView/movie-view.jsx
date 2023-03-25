@@ -31,7 +31,7 @@ export const MovieView = ({ movie, onBackClick }) => {
           src={movie.image}
           width="400"
           height="550"
-          style={{ boxShadow: "5px 5px black" }}
+          style={{ boxShadow: "5px 5px 5px 5px black" }}
         />
       </div>
       <div
@@ -123,7 +123,7 @@ export const MovieView = ({ movie, onBackClick }) => {
             backgroundColor: "#FBC403",
             color: "#343F71",
             border: "1px solid black",
-            boxShadow: ".5px .5px black",
+            boxShadow: "1px 1px 1px 1px black",
           }}
         >
           Back

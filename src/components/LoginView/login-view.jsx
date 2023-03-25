@@ -41,7 +41,9 @@ export const LoginView = ({ onLoggedIn }) => {
   // login form with submit button
   return (
     // handleSubmit is the callback of onSubmit, tells the login API to validate user and password
+    
     <Form onSubmit={handleSubmit}>
+      <div style={{border: "2px solid #E9D8E4", padding: "10px"}}>
       <h3
         style={{
           display: "flex",
@@ -55,6 +57,7 @@ export const LoginView = ({ onLoggedIn }) => {
       >
         Login:
       </h3>
+
       <Form.Group
         controlId="formUsername"
         className="form"
@@ -94,6 +97,7 @@ export const LoginView = ({ onLoggedIn }) => {
         <Button variant="primary" type="submit" className="form-button">
           Submit
         </Button>
+      </div>
       </div>
     </Form>
   );
