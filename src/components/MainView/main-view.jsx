@@ -6,17 +6,15 @@ import { SignupView } from "../SignUpView/signup-view";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import Container from 'react-bootstrap/Container';
+import Container from "react-bootstrap/Container";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser? storedUser : null);
-  const [token, setToken] = useState(storedToken? storedToken : null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-
-
 
   useEffect(() => {
     if (!token) {
@@ -24,76 +22,111 @@ export const MainView = () => {
     }
 
     fetch("https://myflix-micah.herokuapp.com/movies", {
-      headers: {Authorization: `Bearer ${token}`}
+      headers: { Authorization: `Bearer ${token}` },
     })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('data', data);
-          const moviesFromApi = data.map((movie) => {
-            return {
-              id: movie._id,
-              title: movie.Title,
-              image: movie.ImagePath,
-              director: movie.Director.Name,
-              description: movie.Description,
-              genre: movie.Genre.Name
-            }
-            });
-          setMovies(moviesFromApi);
-        })
-    }, [token])
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("data", data);
+        const moviesFromApi = data.map((movie) => {
+          return {
+            id: movie._id,
+            title: movie.Title,
+            image: movie.ImagePath,
+            director: movie.Director.Name,
+            description: movie.Description,
+            genre: movie.Genre.Name,
+          };
+        });
+        setMovies(moviesFromApi);
+      });
+  }, [token]);
 
-     // 'if' statements are replaced by ternary operators '?:' - if true, if false, and combined into one peice of code wrapped in Row
-     return (
-      <Row className="justify-content-md-center">
-        {!user ? (
-          <Col md={5} className="text-danger">
-            <h1 className="text-danger" style= {{ display: 'flex',  justifyContent:'center', alignItems:'center', fontSize: '60px' }}>myFlix</h1>
-            <LoginView
-              onLoggedIn={(user, token) => {
-                setToken(token);
-                setUser(user);
+  // 'if' statements are replaced by ternary operators '?:' - if true, if false, and combined into one peice of code wrapped in Row
+  return (
+    <Row className="justify-content-md-center">
+      {!user ? (
+        <Col md={5} className="text-danger">
+          <h1
+            className="text-danger"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: "60px",
+            }}
+          >
+            myFlix
+          </h1>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setToken(token);
+              setUser(user);
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "30px",
+            }}
+          >
+            <h3 style={{ 
+              fontSize: "40px",
+              border: '2px solid',
+              width: '100px',
+              textAlign: 'center',
               }}
-            />
-            <div style= {{ display: 'flex',  justifyContent:'center', alignItems:'center', marginTop: '20px' }}>
-            <h3>or</h3>
-            </div>
-            <SignupView />
-          </Col>
-        ) : movies.length === 0 ? (
-          <Col md={5}>
-            <h2>No Movies to Show</h2>
-          </Col>
-        ) : selectedMovie ? (
-          <Col md={8}>
-            <h2 className="text-danger" style={{ display: 'flex',  justifyContent:'center', alignItems:'center', fontSize: '60px' }}>Selected Movie</h2>
-            <MovieView
-              movie={selectedMovie}
-              onBackClick={() => setSelectedMovie(null)}
-            />
-            <hr />
-            <h2 className="text-danger" style={{ display: 'flex',  justifyContent:'center', alignItems:'center' }}>Other Movies</h2>
-            <Row>
-              {movies
-                .filter((movie) => movie.genre.name == selectedMovie.genre.name)
-                .map((movie) => (
-                  <Col md={6} key={movie._id} style= {{ width: '300', height: '450' }}>
-                    
-                    <MovieCard
-                      movie={movie}
-                      onMovieClick={(newSelectedMovie) => {
-                        setSelectedMovie(newSelectedMovie);
-                      }}
-                    />
-                  </Col>
-                ))}
-            </Row>
-          </Col>
-        ) : (
-          <>
-            <Row>
-              <Col md={3}>
-                <div style= {{ marginTop: '10px'}}>
+              >or</h3>
+          </div>
+          <SignupView />
+        </Col>
+      ) : movies.length === 0 ? (
+        <Col md={5}>
+          <h2>No Movies to Show</h2>
+        </Col>
+      ) : selectedMovie ? (
+        <Col md={8}>
+          <MovieView
+            movie={selectedMovie}
+            onBackClick={() => setSelectedMovie(null)}
+          />
+          <hr />
+          <h2
+            className="text-danger"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              color: '#f34C19'
+            }}
+          >
+            Other Movies
+          </h2>
+          <Row>
+            {movies
+              .filter((movie) => movie.genre.name == selectedMovie.genre.name)
+              .map((movie) => (
+                <Col
+                  md={4}
+                  key={movie._id}
+                  style={{ width: "300", height: "450" }}
+                >
+                  <MovieCard
+                    movie={movie}
+                    onMovieClick={(newSelectedMovie) => {
+                      setSelectedMovie(newSelectedMovie);
+                    }}
+                  />
+                </Col>
+              ))}
+          </Row>
+        </Col>
+      ) : (
+        <>
+          <Row>
+            <Col md={3}>
+              <div style={{ marginTop: "10px" }}>
                 <Button
                   onClick={() => {
                     setUser(null);
@@ -103,11 +136,22 @@ export const MainView = () => {
                 >
                   Logout
                 </Button>
-                </div>
-              </Col>
-            </Row>
-            <h1 className="text-danger" style= {{ display: 'flex',  justifyContent:'center', alignItems:'center', fontSize: '60px' }}>myFlix</h1>
-            {movies.map((movie) => (
+              </div>
+            </Col>
+          </Row>
+          <h1
+            className="text-danger"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: "60px",
+              color: '#F34C19'
+            }}
+          >
+            myFlix
+          </h1>
+          {movies.map((movie) => (
             <Col key={movie._id} md={3}>
               <MovieCard
                 movie={movie}
@@ -117,12 +161,11 @@ export const MainView = () => {
               />
             </Col>
           ))}
-          </>
+        </>
       )}
     </Row>
   );
 };
-    
 
 
 /*Old Code*/
