@@ -78,6 +78,7 @@ export const MainView = () => {
                 .filter((movie) => movie.genre.name == selectedMovie.genre.name)
                 .map((movie) => (
                   <Col md={6} key={movie._id} style= {{ width: '300', height: '450' }}>
+                    
                     <MovieCard
                       movie={movie}
                       onMovieClick={(newSelectedMovie) => {
@@ -92,6 +93,7 @@ export const MainView = () => {
           <>
             <Row>
               <Col md={3}>
+                <div style= {{ marginTop: '10px'}}>
                 <Button
                   onClick={() => {
                     setUser(null);
@@ -101,8 +103,10 @@ export const MainView = () => {
                 >
                   Logout
                 </Button>
+                </div>
               </Col>
             </Row>
+            <h1 className="text-danger" style= {{ display: 'flex',  justifyContent:'center', alignItems:'center', fontSize: '60px' }}>myFlix</h1>
             {movies.map((movie) => (
             <Col key={movie._id} md={3}>
               <MovieCard
