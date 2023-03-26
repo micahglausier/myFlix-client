@@ -6,7 +6,7 @@ import { SignupView } from "../SignUpView/signup-view";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -43,6 +43,7 @@ export const MainView = () => {
 
   // 'if' statements are replaced by ternary operators '?:' - if true, if false, and combined into one peice of code wrapped in Row
   return (
+    <BrowserRouter>
     <Row className="justify-content-md-center">
       {!user ? (
         <Col md={5} className="text-danger">
@@ -165,6 +166,7 @@ export const MainView = () => {
         </>
       )}
     </Row>
+    </BrowserRouter>
   );
 };
 
