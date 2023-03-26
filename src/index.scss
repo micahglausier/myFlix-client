@@ -1,5 +1,14 @@
-$color: steelblue;
 
-.my-flix {
-  color: $color;
+$body-bg: #adb2c6;
+$primary: #FBC40E;
+$background-color_1: #E9D8E4;
+
+.form {
+    margin-top: 25px;
 }
+
+.form-label {
+    color: $background-color_1;
+}
+
+@import '~bootstrap/scss/bootstrap.scss';
