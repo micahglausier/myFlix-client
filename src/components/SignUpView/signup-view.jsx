@@ -36,75 +36,117 @@ export const SignupView = () => {
 
   return (
     <Form onSubmit={handleSubmit} style={{ textAlign: "left" }}>
-    <div style={{border: "2px solid #E9D8E4", padding: "10px"}}>
-      <h3
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "#FBC403",
-          fontSize: "30px",
-          marginBottom: "-10px",
-          marginTop: "30px",
-        }}
-      >
-        Sign-Up:
-      </h3>
-      <Form.Group controlId="formUsername" className="form">
-        <Form.Label>Username:&nbsp;</Form.Label>
-        <Form.Control
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          minLength="3"
-          style={{ backgroundColor: "whitesmoke", border: "2px solid #F34C19" }}
-        />
-      </Form.Group>
-      <Form.Group controlId="formPassword" className="form">
-        <Form.Label>Password:&nbsp;</Form.Label>
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ backgroundColor: "whitesmoke", border: "2px solid #F34C19" }}
-        />
-      </Form.Group>
-      <Form.Group controlId="formEmail" className="form">
-        <Form.Label>
-          Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </Form.Label>
-        <Form.Control
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ backgroundColor: "whitesmoke", border: "2px solid #F34C19" }}
-        />
-      </Form.Group>
-      <Form.Group controlId="formBirthday" className="form">
-        <Form.Label>Birthday:&nbsp;&nbsp;</Form.Label>
-        <Form.Control
-          type="date"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-          required
-          style={{ backgroundColor: "whitesmoke", border: "2px solid #F34C19" }}
-        />
-      </Form.Group>
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: "20px",
+          border: "4px solid #CC6F57",
+          padding: "10px",
+          boxShadow:
+            "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
+          backgroundColor: "#33364D",
         }}
       >
-        <Button variant="primary" type="submit" className="form-button">
-          Submit
-        </Button>
-      </div>
+        <h3
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "#e5dac6",
+            fontSize: "40px",
+            marginBottom: "-10px",
+            marginTop: "30px",
+          }}
+        >
+          Sign-Up:
+        </h3>
+        <Form.Group controlId="formUsername" className="form">
+          <Form.Label
+            style={{
+              color: "#e5dac6",
+              fontWeight: "500",
+            }}
+          >
+            Username:&nbsp;
+          </Form.Label>
+
+          <Form.Control
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            minLength="3"
+            style={{
+              backgroundColor: "whitesmoke",
+              border: "2px solid #CC6F57",
+              color: "#33364D",
+            }}
+          />
+        </Form.Group>
+        <Form.Group controlId="formPassword" className="form">
+          <Form.Label style={{ color: "#e5dac6", fontWeight: "500" }}>
+            Password:&nbsp;
+          </Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{
+              backgroundColor: "whitesmoke",
+              border: "2px solid #CC6F57",
+              color: "#33364D",
+            }}
+          />
+        </Form.Group>
+        <Form.Group controlId="formEmail" className="form">
+          <Form.Label style={{ color: "#e5dac6", fontWeight: "500" }}>
+            Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </Form.Label>
+          <Form.Control
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{
+              backgroundColor: "whitesmoke",
+              border: "2px solid #CC6F57",
+              color: "#33364D",
+            }}
+          />
+        </Form.Group>
+        <Form.Group controlId="formBirthday" className="form">
+          <Form.Label style={{ color: "#e5dac6", fontWeight: "500" }}>
+            Birthday:&nbsp;&nbsp;
+          </Form.Label>
+          <Form.Control
+            type="date"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+            required
+            style={{
+              backgroundColor: "whitesmoke",
+              border: "2px solid #CC6F57",
+              color: "#33364D",
+            }}
+          />
+        </Form.Group>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20px",
+          }}
+        >
+          <Button
+            style={{
+              backgroundColor: "#e5dac6",
+              color: "#33364D",
+              border: "2px solid #CC6F57",
+            }}
+          >
+            Sign-up
+          </Button>
+        </div>
       </div>
     </Form>
   );

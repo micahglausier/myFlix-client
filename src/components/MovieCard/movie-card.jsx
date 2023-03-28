@@ -9,7 +9,10 @@ export const MovieCard = ({ movie, onMovieClick }) => {
       style={{
         cursor: "pointer",
         marginTop: "10px",
-        border: "2px solid black",
+        border: "3px solid #9B5143",
+        boxShadow:
+          "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
+        backgroundColor: "#33364D",
       }}
       onClick={() => onMovieClick(movie)}
     >
@@ -38,6 +41,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
             justifyContent: "center",
             alignItems: "center",
             fontSize: "13px",
+            color: "#e5dac6",
           }}
         >
           Directed By: {movie.director}
@@ -51,11 +55,20 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         >
           <Button
             onClick={() => onMovieClick(movie)}
-            variant="primary"
             className="open-button"
-            style={{ cursor: "pointer", border: "1px solid black", height: '50px', width: '100px', boxShadow: "1px 1px 1px 1px black" }}
+            style={{
+              backgroundColor: "#e5dac6",
+              color: "#33364D",
+              cursor: "pointer",
+              height: "50px",
+              width: "100px",
+              boxShadow:
+                "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
+              fontWeight: "600",
+              border: "2px solid #CC6F57",
+            }}
           >
-            Open
+            View
           </Button>
         </div>
       </Card.Body>
