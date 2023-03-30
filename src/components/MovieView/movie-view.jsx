@@ -1,6 +1,9 @@
-import { useParams } from "react-router";
+import PropTypes from "prop-types";
+import { Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./movie-view.scss";
+import { useParams } from "react-router"
+import { MovieCard } from "../MovieCard/movie-card";
+import { useEffect, useState } from "react";
 
 export const MovieView = ({ movies, user, token, updateUser }) => {
     const { movieId } = useParams();
@@ -8,6 +11,64 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
     const similarMovies = movies.filter(movie => movie.genre === movie.genre ? true : false)
 
     const [isFavorite, setIsFavorite] = useState(user.FavoriteMovies.includes(movie._id));
+<<<<<<< Updated upstream
+
+    useEffect(() => {
+        setIsFavorite(user.FavoriteMovies.includes(movie.id));
+    }, [movieId])
+
+    const addFavorite = () => {
+        fetch(`https://myflix-micah.herokuapp.com/users/:username/favoriteMovies/:movieid`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` },
+            "Content-Type": "application/json"
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Failed");
+                return false;
+            }
+        })
+        .then(user => {
+            if (user) {
+                alert("Successfully added to favorites");
+                setIsFavorite(true);
+                updateUser(user);
+            }
+        })
+        .catch(e => {
+            alert(e);
+        });
+    }
+
+    const removeFavorite = () => {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.username}/movies/${movie._id}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Failed");
+                return false;
+            }
+        })
+        .then(user => {
+            if (user) {
+                alert("Successfully deleted from favorites");
+                setIsFavorite(false);
+                updateUser(user);
+            }
+        })
+        .catch(e => {
+            alert(e);
+        });
+    }
+=======
+>>>>>>> Stashed changes
 
     useEffect(() => {
         setIsFavorite(user.FavoriteMovies.includes(movie.id));
@@ -64,196 +125,46 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
         });
     }
 
-  return (
-    <div>
-      <div>
-        <img className="w-100" src={movie.image} />
-      </div>
-      <div>
-        <span>Title: </span>
-        <span>{movie.title}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <span>{movie.director}</span>
-      </div>
-      <div>
-        <span>Genre: </span>
-        <span>{movie.genre}</span>
-      </div>
-      <div>
-        <span>Description: </span>
-        <span>{movie.description}</span>
-      </div>
-      <Link to={`/`}>
-        <button className="back-button">Back</button>
-      </Link>
-    </div>
-  );
+    return (
+        <>
+            <Col md={12}>
+                <div className="text-light">
+                    <img className="float-start" style={{width: "600px", marginRight:"30px", marginBottom: "30px"}} src={movie.image} alt="Movie Cover Image" />
+                    <h2>{movie.title}</h2>
+                    <p>{movie.description}</p>
+                    <h4>Genre: </h4>
+                    <h5>{movie.genre}</h5>
+                    <p>{movie.genredescription}</p>
+                    <h4>Director: </h4>
+                    <h5>{movie.director} </h5>
+                    <p>{movie.directorBio}</p>
+                    <Link to={"/"}>
+                        <Button variant="primary">Back</Button>
+                    </Link>
+                    {isFavorite ? 
+                        <Button variant="danger" className="ms-2" onClick={removeFavorite}>Remove from favorites</Button>
+                        : <Button variant="success" className="ms-2" onClick={addFavorite}>Add to favorites</Button>
+                    }                   
+                </div>
+            </Col>
+            <h2 style={{color:"#33364D", textAlign:"center", fontFamily: "exo-soft, san-serif", fontSize: "50px", textShadow: ".05em .05em 0 hsl(200 50% 30%)", marginBottom: "25px",}}>Similar Movies</h2> 
+            {similarMovies.map(movie => (
+                <Col className="mb-4" key={movie.id} xl={2} lg={3} md={4} xs={6}>
+                    <MovieCard movie={movie} />
+                </Col>
+                
+            ))}
+        </>
+    );
 };
 
-
-// export const MovieView = ({ movie, onBackClick }) => {
-//   return (
-//     <div>
-//       <h1
-//         style={{
-//           display: "flex",
-//           justifyContent: "center",
-//           alignItems: "center",
-//           fontSize: "90px",
-//           fontFamily: "exo-soft, san-serif",
-//           color: "#CC6F57",
-//           textShadow: ".05em .05em 0 hsl(200 50% 30%)",
-//           border: "4px solid #33364D",
-//           borderRadius: "2em",
-//           marginBottom: "25px",
-//           boxShadow:
-//             "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
-//           padding: "10px",
-//         }}
-//       >
-//         myFlix
-//       </h1>
-//       <div
-//         style={{
-//           display: "flex",
-//           justifyContent: "center",
-//           alignItems: "center",
-//           color: "#33364D",
-//           fontSize: "60px",
-//           marginTop: "10px",
-//           fontWeight: "600",
-//           textShadow: "0 13.36px 8.896px #c4b59d,0 -2px 1px #fff",
-//         }}
-//       >
-//         <span>{movie.title}</span>
-//       </div>
-//       <div
-//         style={{
-//           display: "flex",
-//           justifyContent: "center",
-//           alignItems: "center",
-//           borderRadius: "5px",
-//           width: "300",
-//           height: "450",
-//           marginTop: "10px",
-//         }}
-//       >
-//         <img
-//           src={movie.image}
-//           width="400"
-//           height="550"
-//           style={{ boxShadow: "5px 5px 5px 5px black", marginBottom: "20px" }}
-//         />
-//       </div>
-//       <div
-//         style={{
-//           backgroundColor: "#33364D",
-//           borderRadius: "2em",
-//           boxShadow:
-//             "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
-//         }}
-//       >
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             color: "whitesmoke",
-//             marginTop: "10px",
-//           }}
-//         >
-//           <span style={{ textShadow: " 1px 1px black", marginTop: "10px" }}>
-//             <u>Director:</u>&nbsp;{" "}
-//           </span>
-//         </div>
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             color: "whitesmoke",
-//           }}
-//         >
-//           <span>{movie.director}</span>
-//         </div>
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             color: "whitesmoke",
-//             marginTop: "10px",
-//           }}
-//         >
-//           <span style={{ textShadow: " 1px 1px black" }}>
-//             <u>Genre:</u>&nbsp;{" "}
-//           </span>
-//         </div>
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             color: "whitesmoke",
-//           }}
-//         >
-//           <span>{movie.genre}</span>
-//         </div>
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             color: "whitesmoke",
-//             marginTop: "10px",
-//           }}
-//         >
-//           <span style={{ textShadow: " 1px 1px black" }}>
-//             <u>Description:</u>&nbsp;{" "}
-//           </span>
-//         </div>
-//         <div
-//           style={{
-//             display: "block",
-//             marginRight: "auto",
-//             marginLeft: "auto",
-//             textAlign: "center",
-//             color: "whitesmoke",
-//             width: "350px",
-//           }}
-//         >
-//           <span>{movie.description}</span>
-//         </div>
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             marginTop: "10px",
-//           }}
-//         >
-//           <button
-//             onClick={onBackClick}
-//             className="back-button"
-//             style={{
-//               cursor: "pointer",
-//               height: "50px",
-//               width: "150px",
-//               backgroundColor: "#e5dac6",
-//               color: "#33364D",
-//               border: "2px solid #CC6F57",
-//               boxShadow:
-//                 "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
-//               marginBottom: "25px",
-//               fontWeight: "600",
-//             }}
-//           >
-//             Back
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+MovieView.propTypes = {
+    movies: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired
+    }).isRequired)
+};

@@ -1,8 +1,11 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
+import React from "react"
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 
 export const SignupView = () => {
+  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -12,24 +15,25 @@ export const SignupView = () => {
     event.preventDefault();
 
     const data = {
+      Name: name,
       Username: username,
       Password: password,
       Email: email,
-      Birthday: birthday,
+      Birthday: birthday
     };
 
     fetch("https://myflix-micah.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/json",
-      },
+        "Content-Type": "application/json"
+      }
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
         window.location.reload();
       } else {
-        alert("Signup Failed");
+        alert("Signup failed");
       }
     });
   };
@@ -138,6 +142,7 @@ export const SignupView = () => {
           }}
         >
           <Button
+            type="submit"
             style={{
               backgroundColor: "#e5dac6",
               color: "#33364D",

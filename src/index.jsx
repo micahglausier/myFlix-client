@@ -4,11 +4,13 @@ import { MainView } from "./components/MainView/main-view";
 import Container from "react-bootstrap/Container";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.scss";
+import "../src/index.scss";
 
 const App = () => {
   return (
-    <Container>
+    <Container style={{ 
+      backgroundColor: "#e5dac6", 
+    }}>
       <MainView />
     </Container>
   );
