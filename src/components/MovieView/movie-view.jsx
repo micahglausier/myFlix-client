@@ -2,10 +2,67 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies }) => {
-  const { movieId } = useParams();
+export const MovieView = ({ movies, user, token, updateUser }) => {
+    const { movieId } = useParams();
+    const movie = movies.find(m => m.id === movieId);
+    const similarMovies = movies.filter(movie => movie.genre === movie.genre ? true : false)
 
-  const movie = movies.find((b) => b.id === movieId);
+    const [isFavorite, setIsFavorite] = useState(user.FavoriteMovies.includes(movie._id));
+
+    useEffect(() => {
+        setIsFavorite(user.FavoriteMovies.includes(movie.id));
+    }, [movieId])
+
+    const addFavorite = () => {
+        fetch(`https://myflix-micah.herokuapp.com/users/:username/favoriteMovies/:movieid`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` },
+            "Content-Type": "application/json"
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Failed");
+                return false;
+            }
+        })
+        .then(user => {
+            if (user) {
+                alert("Successfully added to favorites");
+                setIsFavorite(true);
+                updateUser(user);
+            }
+        })
+        .catch(e => {
+            alert(e);
+        });
+    }
+
+    const removeFavorite = () => {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.username}/movies/${movie._id}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Failed");
+                return false;
+            }
+        })
+        .then(user => {
+            if (user) {
+                alert("Successfully deleted from favorites");
+                setIsFavorite(false);
+                updateUser(user);
+            }
+        })
+        .catch(e => {
+            alert(e);
+        });
+    }
 
   return (
     <div>
