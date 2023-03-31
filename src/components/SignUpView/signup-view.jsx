@@ -1,158 +1,87 @@
 import { useState } from "react";
-import React from "react"
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-
+import { Form, Button, Card } from "react-bootstrap";
 
 export const SignupView = () => {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+    const [Username, setUsername] = useState("");
+    const [Password, setPassword] = useState("");
+    const [Email, setEmail] = useState("");
+    const [Birthday, setBirthday] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+    const handleSubmit = event => {
+        event.preventDefault();
 
-    const data = {
-      Name: name,
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
+        const data = {
+            Username,
+            Password,
+            Email,
+            Birthday
+        }
+
+        fetch("https://myflix-micah.herokuapp.com/users", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Signup successful");
+                window.location.replace("/login");
+            } else {
+                alert("Signup failed");
+            }
+        });
     };
 
-    fetch("https://myflix-micah.herokuapp.com/users", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then((response) => {
-      if (response.ok) {
-        alert("Signup successful");
-        window.location.reload();
-      } else {
-        alert("Signup failed");
-      }
-    });
-  };
-
-  return (
-    <Form onSubmit={handleSubmit} style={{ textAlign: "left" }}>
-      <div
-        style={{
-          border: "4px solid #CC6F57",
-          padding: "10px",
-          boxShadow:
-            "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
-          backgroundColor: "#33364D",
-        }}
-      >
-        <h3
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "#e5dac6",
-            fontSize: "40px",
-            marginBottom: "-10px",
-            marginTop: "30px",
-          }}
-        >
-          Sign-Up:
-        </h3>
-        <Form.Group controlId="formUsername" className="form">
-          <Form.Label
-            style={{
-              color: "#e5dac6",
-              fontWeight: "500",
-            }}
-          >
-            Username:&nbsp;
-          </Form.Label>
-
-          <Form.Control
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            minLength="3"
-            style={{
-              backgroundColor: "whitesmoke",
-              border: "2px solid #CC6F57",
-              color: "#33364D",
-            }}
-          />
-        </Form.Group>
-        <Form.Group controlId="formPassword" className="form">
-          <Form.Label style={{ color: "#e5dac6", fontWeight: "500" }}>
-            Password:&nbsp;
-          </Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{
-              backgroundColor: "whitesmoke",
-              border: "2px solid #CC6F57",
-              color: "#33364D",
-            }}
-          />
-        </Form.Group>
-        <Form.Group controlId="formEmail" className="form">
-          <Form.Label style={{ color: "#e5dac6", fontWeight: "500" }}>
-            Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </Form.Label>
-          <Form.Control
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{
-              backgroundColor: "whitesmoke",
-              border: "2px solid #CC6F57",
-              color: "#33364D",
-            }}
-          />
-        </Form.Group>
-        <Form.Group controlId="formBirthday" className="form">
-          <Form.Label style={{ color: "#e5dac6", fontWeight: "500" }}>
-            Birthday:&nbsp;&nbsp;
-          </Form.Label>
-          <Form.Control
-            type="date"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-            required
-            style={{
-              backgroundColor: "whitesmoke",
-              border: "2px solid #CC6F57",
-              color: "#33364D",
-            }}
-          />
-        </Form.Group>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "20px",
-          }}
-        >
-          <Button
-            type="submit"
-            style={{
-              backgroundColor: "#e5dac6",
-              color: "#33364D",
-              border: "2px solid #CC6F57",
-            }}
-          >
-            Sign-up
-          </Button>
-        </div>
-      </div>
-    </Form>
-  );
+    return (
+        <Card className="mt-2 mb-3">
+            <Card.Body>
+                <Card.Title>Sign up</Card.Title>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group>
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            value={Username}
+                            onChange={e => setUsername(e.target.value)}
+                            required
+                            minLength="5"
+                            className="bg-light"
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control
+                            type="password"
+                            value={Password}
+                            onChange={e => setPassword(e.target.value)}
+                            required
+                            minLength="8"
+                            className="bg-light"
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Email:</Form.Label>
+                        <Form.Control
+                            type="email"
+                            value={Email}
+                            onChange={e => setEmail(e.target.value)}
+                            required
+                            className="bg-light"
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Birthdate:</Form.Label>
+                        <Form.Control
+                            type="date"
+                            value={Birthday}
+                            onChange={e => setBirthday(e.target.value)}
+                            required
+                            className="bg-light"
+                        />
+                    </Form.Group>
+                    <Button className="mt-3" variant="primary" type="submit">Submit</Button>
+                </Form>
+            </Card.Body>
+        </Card>
+    );
 };

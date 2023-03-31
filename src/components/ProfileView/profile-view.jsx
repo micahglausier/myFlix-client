@@ -4,24 +4,24 @@ import { MovieCard } from "../MovieCard/movie-card";
 
 export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) => {
 
-    const [Username, setUsername] = useState("");
-    const [Password, setPassword] = useState("");
-    const [Email, setEmail] = useState("");
-    const [Birthday, setBirthday] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [birthday, setBirthday] = useState("");
 
-    let favoriteMovies = movies.filter(movie => user.FavoriteMovies.includes(movie.id));
+    let favoriteMovies = movies.filter(movie => user.FavoriteMovies.includes(movie._id));
     
     const handleSubmit = event => {
         event.preventDefault();
 
         const data = {
-            Username,
-            Password,
-            Email,
-            Birthday
+            username,
+            password,
+            email,
+            birthday
         }
 
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.username}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -50,7 +50,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
 
     const deleteAccount = () => {
         console.log("doin")
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.username}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         })
@@ -95,7 +95,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                 <Form.Label>Username:</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    value={Username}
+                                    value={username}
                                     onChange={e => setUsername(e.target.value)}
                                     required
                                     minLength="5"
@@ -106,7 +106,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                 <Form.Label>Password:</Form.Label>
                                 <Form.Control
                                     type="password"
-                                    value={Password}
+                                    value={password}
                                     onChange={e => setPassword(e.target.value)}
                                     required
                                     minLength="8"
@@ -117,18 +117,18 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                                 <Form.Label>Email:</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    value={Email}
+                                    value={email}
                                     onChange={e => setEmail(e.target.value)}
                                     required
                                     className="bg-light"
                                 />
                             </Form.Group>
                             <Form.Group>
-                                <Form.Label>Birthday:</Form.Label>
+                                <Form.Label>Birthdate:</Form.Label>
                                 <Form.Control
                                     type="date"
-                                    value={Birthday}
-                                    onChange={e => setBirthday(e.target.value)}
+                                    value={birthday}
+                                    onChange={e => setBirthdate(e.target.value)}
                                     required
                                     className="bg-light"
                                 />
@@ -142,7 +142,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, updateUser }) =>
                 <h3 className="mt-3 mb-3 text-light">Your favorite movies:</h3>
             </Col>
             {favoriteMovies.map(movie => (
-                <Col className="mb-4" key={movie._id} xl={2} lg={3} md={4} xs={6}>
+                <Col className="mb-4" key={movie.id} xl={2} lg={3} md={4} xs={6}>
                     <MovieCard movie={movie} />
                 </Col>
             ))}

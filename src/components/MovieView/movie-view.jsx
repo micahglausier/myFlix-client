@@ -10,42 +10,15 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
     const movie = movies.find(m => m.id === movieId);
     const similarMovies = movies.filter(movie => movie.genre === movie.genre ? true : false)
 
-    const [isFavorite, setIsFavorite] = useState(user.FavoriteMovies.includes(movie._id));
-<<<<<<< Updated upstream
+    const [isFavorite, setIsFavorite] = useState(user.favoriteMovieList.includes(movie._id));
 
     useEffect(() => {
-        setIsFavorite(user.FavoriteMovies.includes(movie.id));
+        setIsFavorite(user.favoriteMovieList.includes(movie.id));
     }, [movieId])
 
     const addFavorite = () => {
-        fetch(`https://myflix-micah.herokuapp.com/users/:username/favoriteMovies/:movieid`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
             method: "POST",
-            headers: { Authorization: `Bearer ${token}` },
-            "Content-Type": "application/json"
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                alert("Failed");
-                return false;
-            }
-        })
-        .then(user => {
-            if (user) {
-                alert("Successfully added to favorites");
-                setIsFavorite(true);
-                updateUser(user);
-            }
-        })
-        .catch(e => {
-            alert(e);
-        });
-    }
-
-    const removeFavorite = () => {
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.username}/movies/${movie._id}`, {
-            method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         })
         .then(response => {
@@ -58,38 +31,6 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
         })
         .then(user => {
             if (user) {
-                alert("Successfully deleted from favorites");
-                setIsFavorite(false);
-                updateUser(user);
-            }
-        })
-        .catch(e => {
-            alert(e);
-        });
-    }
-=======
->>>>>>> Stashed changes
-
-    useEffect(() => {
-        setIsFavorite(user.FavoriteMovies.includes(movie.id));
-    }, [movieId])
-
-    const addFavorite = () => {
-        fetch(`https://myflix-micah.herokuapp.com/users/:username/favoriteMovies/:movieid`, {
-            method: "POST",
-            headers: { Authorization: `Bearer ${token}` },
-            "Content-Type": "application/json"
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                alert("Failed");
-                return false;
-            }
-        })
-        .then(user => {
-            if (user) {
                 alert("Successfully added to favorites");
                 setIsFavorite(true);
                 updateUser(user);
@@ -101,7 +42,7 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
     }
 
     const removeFavorite = () => {
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.username}/movies/${movie._id}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         })
@@ -129,15 +70,13 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
         <>
             <Col md={12}>
                 <div className="text-light">
-                    <img className="float-start" style={{width: "600px", marginRight:"30px", marginBottom: "30px"}} src={movie.image} alt="Movie Cover Image" />
+                    <img className="float-start me-3 mb-2" src={movie.image} alt="Movie Cover Image" height={500}/>
                     <h2>{movie.title}</h2>
                     <p>{movie.description}</p>
-                    <h4>Genre: </h4>
-                    <h5>{movie.genre}</h5>
-                    <p>{movie.genredescription}</p>
-                    <h4>Director: </h4>
-                    <h5>{movie.director} </h5>
-                    <p>{movie.directorBio}</p>
+                    <h5>Genre: </h5>
+                    <p>{movie.genre}</p>
+                    <h5>Director: </h5>
+                    <p>{movie.director}</p>
                     <Link to={"/"}>
                         <Button variant="primary">Back</Button>
                     </Link>
@@ -145,26 +84,29 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
                         <Button variant="danger" className="ms-2" onClick={removeFavorite}>Remove from favorites</Button>
                         : <Button variant="success" className="ms-2" onClick={addFavorite}>Add to favorites</Button>
                     }                   
+                    <h3 className="mt-3 mb-3 text-light">Similar movies:</h3>
                 </div>
-            </Col>
-            <h2 style={{color:"#33364D", textAlign:"center", fontFamily: "exo-soft, san-serif", fontSize: "50px", textShadow: ".05em .05em 0 hsl(200 50% 30%)", marginBottom: "25px",}}>Similar Movies</h2> 
+            </Col> 
             {similarMovies.map(movie => (
                 <Col className="mb-4" key={movie.id} xl={2} lg={3} md={4} xs={6}>
                     <MovieCard movie={movie} />
                 </Col>
-                
             ))}
         </>
     );
 };
 
 MovieView.propTypes = {
-    movies: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired
-    }).isRequired)
+  movie: PropTypes.shape({
+      
+    director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+      }),
+    genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }),
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired
+  }).isRequired
 };
