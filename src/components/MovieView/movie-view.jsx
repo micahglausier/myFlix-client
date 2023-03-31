@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export const MovieView = ({ movies, user, token, updateUser }) => {
     const { movieId } = useParams();
     const movie = movies.find(m => m.id === movieId);
-    const similarMovies = movies.filter(movie => movie.genre === movie.genre ? true : false)
+    const similarMovies = movies.filter(movie => movie.Genre === movie.Genre ? true : false)
 
     const [isFavorite, setIsFavorite] = useState(user.FavoriteMovies.includes(movie.id));
 

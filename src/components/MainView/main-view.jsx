@@ -33,7 +33,7 @@ export const MainView = () => {
     fetch("https://myflix-micah.herokuapp.com/movies", {
       headers: {Authorization: `Bearer ${token}`}
     })
-    .then(resonse => resonse.json())
+    .then(response => response.json())
     .then(movies => {
         const moviesFromAPI = movies.map(movie => {
             return {

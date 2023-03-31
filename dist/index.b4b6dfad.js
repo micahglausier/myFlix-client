@@ -28354,7 +28354,7 @@ const MainView = ()=>{
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((resonse)=>resonse.json()).then((movies)=>{
+        }).then((response)=>response.json()).then((movies)=>{
             const moviesFromAPI = movies.map((movie)=>{
                 return {
                     id: movie._id,
@@ -42999,7 +42999,7 @@ const MovieView = ({ movies , user , token , updateUser  })=>{
     _s();
     const { movieId  } = (0, _reactRouter.useParams)();
     const movie = movies.find((m)=>m.id === movieId);
-    const similarMovies = movies.filter((movie)=>movie.genre === movie.genre ? true : false);
+    const similarMovies = movies.filter((movie)=>movie.Genre === movie.Genre ? true : false);
     const [isFavorite, setIsFavorite] = (0, _react.useState)(user.FavoriteMovies.includes(movie.id));
     (0, _react.useEffect)(()=>{
         setIsFavorite(user.FavoriteMovies.includes(movie.id));
@@ -43665,7 +43665,7 @@ const NavigationBar = ({ user , onLoggedOut , onSearch  })=>{
                                         variant: "primary",
                                         onClick: ()=>{
                                             onSearch(query);
-                                            setQuery("");
+                                            setQuery("movies");
                                         },
                                         children: "Search"
                                     }, void 0, false, {

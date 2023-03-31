@@ -39,7 +39,7 @@ export const NavigationBar = ({ user, onLoggedOut, onSearch }) => {
                             <Link to={"/"}>
                                 <Button variant="primary" onClick={() => {
                                     onSearch(query);
-                                    setQuery("");
+                                    setQuery("movies");
                                 }}>Search</Button>
                             </Link>
                         </Form>
