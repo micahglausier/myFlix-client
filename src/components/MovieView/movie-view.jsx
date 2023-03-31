@@ -10,14 +10,14 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
     const movie = movies.find(m => m.id === movieId);
     const similarMovies = movies.filter(movie => movie.genre === movie.genre ? true : false)
 
-    const [isFavorite, setIsFavorite] = useState(user.favoriteMovieList.includes(movie._id));
+    const [isFavorite, setIsFavorite] = useState(user.FavoriteMovies.includes(movie.id));
 
     useEffect(() => {
-        setIsFavorite(user.favoriteMovieList.includes(movie.id));
+        setIsFavorite(user.FavoriteMovies.includes(movie.id));
     }, [movieId])
 
     const addFavorite = () => {
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` }
         })
@@ -42,7 +42,7 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
     }
 
     const removeFavorite = () => {
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         })

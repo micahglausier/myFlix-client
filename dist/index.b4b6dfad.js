@@ -43000,14 +43000,14 @@ const MovieView = ({ movies , user , token , updateUser  })=>{
     const { movieId  } = (0, _reactRouter.useParams)();
     const movie = movies.find((m)=>m.id === movieId);
     const similarMovies = movies.filter((movie)=>movie.genre === movie.genre ? true : false);
-    const [isFavorite, setIsFavorite] = (0, _react.useState)(user.favoriteMovieList.includes(movie._id));
+    const [isFavorite, setIsFavorite] = (0, _react.useState)(user.FavoriteMovies.includes(movie.id));
     (0, _react.useEffect)(()=>{
-        setIsFavorite(user.favoriteMovieList.includes(movie.id));
+        setIsFavorite(user.FavoriteMovies.includes(movie.id));
     }, [
         movieId
     ]);
     const addFavorite = ()=>{
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -43029,7 +43029,7 @@ const MovieView = ({ movies , user , token , updateUser  })=>{
         });
     };
     const removeFavorite = ()=>{
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -43183,7 +43183,7 @@ const MovieView = ({ movies , user , token , updateUser  })=>{
         ]
     }, void 0, true);
 };
-_s(MovieView, "oFUQbFcTQ2Fd7IolHmPK7/yPrhQ=", false, function() {
+_s(MovieView, "OZu1dgkcEaeLBH+1f5+nNY8GNNM=", false, function() {
     return [
         (0, _reactRouter.useParams)
     ];
