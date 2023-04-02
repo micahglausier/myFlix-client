@@ -1,87 +1,132 @@
 import { useState } from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import { Button, Form, Row, Col } from "react-bootstrap";
 
-export const SignupView = () => {
-    const [Username, setUsername] = useState("");
-    const [Password, setPassword] = useState("");
-    const [Email, setEmail] = useState("");
-    const [Birthday, setBirthday] = useState("");
+export const SignUpView = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [email, setEmail] = useState("");
 
-    const handleSubmit = event => {
-        event.preventDefault();
-
-        const data = {
-            Username,
-            Password,
-            Email,
-            Birthday
-        }
-
-        fetch("https://myflix-micah.herokuapp.com/users", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" }
-        })
-        .then(response => {
-            if (response.ok) {
-                alert("Signup successful");
-                window.location.replace("/login");
-            } else {
-                alert("Signup failed");
-            }
-        });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      Username: username,
+      Password: password,
+      Birthday: birthday,
+      Email: email,
     };
+    fetch("https://myflix-micah.herokuapp.com/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      if (res.ok) {
+        alert("Sign up successful");
+        window.location.reload();
+      } else {
+        alert("Sign up failed");
+      }
+    });
+  };
 
-    return (
-        <Card className="mt-2 mb-3">
-            <Card.Body>
-                <Card.Title>Sign up</Card.Title>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group>
-                        <Form.Label>Username:</Form.Label>
-                        <Form.Control
-                            type="text"
-                            value={Username}
-                            onChange={e => setUsername(e.target.value)}
-                            required
-                            minLength="5"
-                            className="bg-light"
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Password:</Form.Label>
-                        <Form.Control
-                            type="password"
-                            value={Password}
-                            onChange={e => setPassword(e.target.value)}
-                            required
-                            minLength="8"
-                            className="bg-light"
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Email:</Form.Label>
-                        <Form.Control
-                            type="email"
-                            value={Email}
-                            onChange={e => setEmail(e.target.value)}
-                            required
-                            className="bg-light"
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Birthdate:</Form.Label>
-                        <Form.Control
-                            type="date"
-                            value={Birthday}
-                            onChange={e => setBirthday(e.target.value)}
-                            required
-                            className="bg-light"
-                        />
-                    </Form.Group>
-                    <Button className="mt-3" variant="primary" type="submit">Submit</Button>
-                </Form>
-            </Card.Body>
-        </Card>
-    );
+  return (
+    <div>
+      <Form
+        action="POST"
+        onSubmit={handleSubmit}
+        style={{
+          backgroundColor: "#33364D",
+          boxShadow:
+            "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
+          width: "500px",
+          border: "2px solid #CC6F57",
+        }}
+      >
+        <Row
+          className="mb-3"
+          style={{ marginRight: "10px", marginLeft: "10px", marginTop: "10px" }}
+        >
+          <Form.Group as={Col} controlId="formUsername">
+            <Form.Label
+              style={{ color: "#e5dac6", fontSize: "20px" }}
+              htmlFor=""
+            >
+              Username:{" "}
+            </Form.Label>
+            <Form.Control
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              minLength="3"
+            />
+          </Form.Group>
+          <Form.Group
+            as={Col}
+            controlId="formPassword"
+            style={{ marginRight: "10px", marginLeft: "10px" }}
+          >
+            <Form.Label
+              style={{ color: "#e5dac6", fontSize: "20px" }}
+              htmlFor=""
+            >
+              Password:{" "}
+            </Form.Label>
+            <Form.Control
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </Form.Group>
+        </Row>
+
+        <Form.Group
+          className="mb-3"
+          controlId="formBirthday"
+          style={{ marginRight: "10px", marginLeft: "10px" }}
+        >
+          <Form.Label style={{ color: "#e5dac6", fontSize: "20px" }} htmlFor="">
+            Birthday:{" "}
+          </Form.Label>
+          <Form.Control
+            type="date"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group
+          className="mb-3"
+          controlId="formEmail"
+          style={{ marginRight: "10px", marginLeft: "10px" }}
+        >
+          <Form.Label style={{ color: "#e5dac6", fontSize: "20px" }} htmlFor="">
+            Email:{" "}
+          </Form.Label>
+          <Form.Control
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </Form.Group>
+
+        <Button
+          variant="primary"
+          type="submit"
+          style={{
+            marginRight: "10px",
+            marginLeft: "10px",
+            backgroundColor: "#CC6F57",
+            marginBottom: "10px",
+          }}
+        >
+          Submit
+        </Button>
+      </Form>
+    </div>
+  );
 };

@@ -1,112 +1,92 @@
-import PropTypes from "prop-types";
-import { Button, Col } from "react-bootstrap";
+import { Button, Col, Row, Container } from "react-bootstrap";
+import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router"
-import { MovieCard } from "../MovieCard/movie-card";
-import { useEffect, useState } from "react";
+import "./movie-view.scss";
+export const MovieView = ({ movies }) => {
+  const { movieId } = useParams();
 
-export const MovieView = ({ movies, user, token, updateUser }) => {
-    const { movieId } = useParams();
-    const movie = movies.find(m => m.id === movieId);
-    const similarMovies = movies.filter(movie => movie.Genre === movie.Genre ? true : false)
-
-    const [isFavorite, setIsFavorite] = useState(user.FavoriteMovies.includes(movie.id));
-
-    useEffect(() => {
-        setIsFavorite(user.FavoriteMovies.includes(movie.id));
-    }, [movieId])
-
-    const addFavorite = () => {
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
-            method: "POST",
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                alert("Failed");
-                return false;
-            }
-        })
-        .then(user => {
-            if (user) {
-                alert("Successfully added to favorites");
-                setIsFavorite(true);
-                updateUser(user);
-            }
-        })
-        .catch(e => {
-            alert(e);
-        });
-    }
-
-    const removeFavorite = () => {
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/movies/${movie.id}`, {
-            method: "DELETE",
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                alert("Failed");
-                return false;
-            }
-        })
-        .then(user => {
-            if (user) {
-                alert("Successfully deleted from favorites");
-                setIsFavorite(false);
-                updateUser(user);
-            }
-        })
-        .catch(e => {
-            alert(e);
-        });
-    }
-
-    return (
-        <>
-            <Col md={12}>
-                <div className="text-light">
-                    <img className="float-start me-3 mb-2" src={movie.image} alt="Movie Cover Image" height={500}/>
-                    <h2>{movie.title}</h2>
-                    <p>{movie.description}</p>
-                    <h5>Genre: </h5>
-                    <p>{movie.genre}</p>
-                    <h5>Director: </h5>
-                    <p>{movie.director}</p>
-                    <Link to={"/"}>
-                        <Button variant="primary">Back</Button>
-                    </Link>
-                    {isFavorite ? 
-                        <Button variant="danger" className="ms-2" onClick={removeFavorite}>Remove from favorites</Button>
-                        : <Button variant="success" className="ms-2" onClick={addFavorite}>Add to favorites</Button>
-                    }                   
-                    <h3 className="mt-3 mb-3 text-light">Similar movies:</h3>
-                </div>
-            </Col> 
-            {similarMovies.map(movie => (
-                <Col className="mb-4" key={movie.id} xl={2} lg={3} md={4} xs={6}>
-                    <MovieCard movie={movie} />
-                </Col>
-            ))}
-        </>
-    );
-};
-
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-      
-    director: PropTypes.shape({
-        Name: PropTypes.string.isRequired,
-      }),
-    genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired
-    }),
-      title: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired
-  }).isRequired
+  const movie = movies.find((m) => m._id === movieId);
+  return (
+    <Container style={{ marginBottom: "50px" }}>
+      <Col>
+        <img
+          src={movie.ImagePath}
+          alt=""
+          style={{
+            height: "700px",
+            float: "left",
+            border: "2px solid #CC6F57",
+            borderRadius: "2em",
+            boxShadow:
+              "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
+          }}
+        />
+      </Col>
+      <Col>
+        <Row>
+          <Col>
+            <h1
+              style={{
+                fontFamily: "exo-soft",
+                color: "#CC6F57",
+                textShadow: ".05em .05em 0 hsl(200 50% 30%)",
+                fontSize: "45px",
+                marginLeft: "25px",
+              }}
+            >
+              {movie.Title}
+            </h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            className="movieDirector"
+            style={{ color: "#33364D", marginLeft: "25px" }}
+          >
+            <h2>
+              <b>Director:</b>
+              <br></br> {movie.Director.Name}
+            </h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            className="movieGenre"
+            style={{ color: "#33364D", marginLeft: "25px" }}
+          >
+            <p>
+              <b>Genre:</b>
+              <br></br> {movie.Genre.Name}
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            className="movieDescription"
+            style={{ color: "#33364D", marginLeft: "25px" }}
+          >
+            <p>
+              <b>Description:</b>
+              <br></br>
+              {movie.Description}
+            </p>
+          </Col>
+        </Row>
+        <Link to={`/`}>
+          <Button
+            variant="primary"
+            style={{
+              marginLeft: "35px",
+              backgroundColor: "#CC6F57",
+              marginBottom: "10px",
+              boxShadow:
+                "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
+            }}
+          >
+            Back
+          </Button>
+        </Link>
+      </Col>
+    </Container>
+  );
 };

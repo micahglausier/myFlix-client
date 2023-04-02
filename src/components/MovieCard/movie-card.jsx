@@ -1,31 +1,75 @@
-import React from "react";
 import PropTypes from "prop-types";
-import { Card, Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+export const MovieCard = ({ movie, toggleFavorite, favoriteMovies }) => {
+  const isFavorite = favoriteMovies.includes(movie._id);
+  return (
+    <Card
+      className="h-100"
+      style={{ backgroundColor: "#33364D", border: "2px solid #CC6F57" }}
+    >
+      <Card.Img src={movie.ImagePath} />
+      <Card.Body>
+        <Card.Title
+          style={{ color: "#e5dac6", textAlign: "center", fontSize: "18px" }}
+        >
+          {movie.Title}
+        </Card.Title>
+        <Card.Text
+          style={{ color: "#e5dac6", textAlign: "center", fontSize: "15px" }}
+        >
+          {movie.Director.Name}
+        </Card.Text>
+        {!isFavorite ? (
+          <AiOutlineHeart
+            className="heart"
+            onClick={() => toggleFavorite(movie._id)}
+            style={{
+              color: "#CC6F57",
+              textAlign: "center",
+              display: "block",
+              marginRight: "auto",
+              marginLeft: "auto",
+              marginBottom: "10px",
+            }}
+          />
+        ) : (
+          <AiFillHeart
+            className="heart"
+            onClick={() => toggleFavorite(movie._id)}
+            style={{
+              color: "#CC6F57",
+              textAlign: "center",
+              display: "block",
+              marginRight: "auto",
+              marginLeft: "auto",
+              marginBottom: "10px",
+            }}
+          />
+        )}
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+          <Button
+            variant="link"
+            style={{
+              display: "block",
+              marginRight: "auto",
+              marginLeft: "auto",
+              backgroundColor: "#CC6F57",
+              marginBottom: "10px",
+              textDecoration: "none",
+            }}
+          >
+            Open
+          </Button>
+        </Link>
+      </Card.Body>
+    </Card>
+  );
+};
 
-export const MovieCard = ({ movie }) => {
-    return (
-        <Card className="h-100" style={{ border: "none" }}>
-            <Card.Img variant="top" src={movie.image} />
-            <Card.Body className="h-100 d-flex flex-column">
-                <Card.Title>{movie.title}</Card.Title>
-                <Link to={`/movies/${encodeURIComponent(movie.id)}`}  className="mt-auto">
-                    <Button variant="primary">Open</Button>
-                </Link>
-            </Card.Body>
-        </Card>
-    );
-}
-  MovieCard.propTypes = {
-    movie: PropTypes.shape({
-      director: PropTypes.shape({
-          Name: PropTypes.string.isRequired,
-        }),
-      genre: PropTypes.shape({
-        Name: PropTypes.string.isRequired
-      }),
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired
-    }).isRequired
-  };
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string,
+  }).isRequired,
+};
