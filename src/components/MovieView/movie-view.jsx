@@ -1,11 +1,14 @@
 import { Button, Col, Row, Container } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import "./movie-view.scss";
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
-
   const movie = movies.find((m) => m._id === movieId);
+  
+
+  
   return (
     <Container style={{ marginBottom: "50px" }}>
       <Col>
@@ -72,6 +75,7 @@ export const MovieView = ({ movies }) => {
             </p>
           </Col>
         </Row>
+        
         <Link to={`/`}>
           <Button
             variant="primary"

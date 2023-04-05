@@ -21,7 +21,7 @@ export const NavigationBar = ({ user, onLoggedOut, onFilter }) => {
             fontSize: "75px",
           }}
         >
-          myFlix
+          favMOV
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
