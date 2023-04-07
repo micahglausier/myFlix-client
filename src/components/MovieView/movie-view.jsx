@@ -3,9 +3,10 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import "./movie-view.scss";
-export const MovieView = ({ movies }) => {
+export const MovieView = ({ movies, movie, toggleFavorite, favoriteMovies }) => {
+  
   const { movieId } = useParams();
-  const movie = movies.find((m) => m._id === movieId);
+  const movi = movies.find((m) => m._id === movieId);
   
 
   
@@ -13,7 +14,7 @@ export const MovieView = ({ movies }) => {
     <Container style={{ marginBottom: "50px" }}>
       <Col>
         <img
-          src={movie.ImagePath}
+          src={movi.ImagePath}
           alt=""
           style={{
             height: "700px",
@@ -37,7 +38,7 @@ export const MovieView = ({ movies }) => {
                 marginLeft: "25px",
               }}
             >
-              {movie.Title}
+              {movi.Title}
             </h1>
           </Col>
         </Row>
@@ -48,7 +49,7 @@ export const MovieView = ({ movies }) => {
           >
             <h2>
               <b>Director:</b>
-              <br></br> {movie.Director.Name}
+              <br></br> {movi.Director.Name}
             </h2>
           </Col>
         </Row>
@@ -59,7 +60,7 @@ export const MovieView = ({ movies }) => {
           >
             <p>
               <b>Genre:</b>
-              <br></br> {movie.Genre.Name}
+              <br></br> {movi.Genre.Name}
             </p>
           </Col>
         </Row>
@@ -71,11 +72,17 @@ export const MovieView = ({ movies }) => {
             <p>
               <b>Description:</b>
               <br></br>
-              {movie.Description}
+              {movi.Description}
             </p>
           </Col>
         </Row>
-        
+        <Row>
+          <p style={{ color: "#33364D", marginLeft: "25px" }}>
+            <b>Trailer:</b>
+          </p>
+        <video src={movi.TrailerPath} style={{marginLeft: "25px", marginBottom: "10px", maxWidth: "350px" }}  controls>
+        </video>
+        </Row>
         <Link to={`/`}>
           <Button
             variant="primary"

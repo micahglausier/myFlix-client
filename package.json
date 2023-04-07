@@ -15,8 +15,10 @@
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "react-native-youtube": "^2.0.2",
     "react-router": "6.3.0",
-    "react-router-dom": "6.3.0"
+    "react-router-dom": "6.3.0",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",

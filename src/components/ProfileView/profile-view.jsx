@@ -66,7 +66,7 @@ export const ProfileView = ({
     >
       <h1 style={{ color: "#33364D" }}>Username: {user.Username}</h1>
       <h1 style={{ color: "#33364D" }}>Email: {user.Email}</h1>
-      <h1 style={{ color: "#33364D", }}>Birthday: {user.Birthday}</h1>
+      <h1 style={{ color: "#33364D", }}>Birthday: {user.Birthday.slice(0, 10)}</h1>
 
       <Button
         variant="primary"

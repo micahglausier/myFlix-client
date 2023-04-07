@@ -42,8 +42,21 @@ export const SignUpView = () => {
             "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
           width: "500px",
           border: "2px solid #CC6F57",
+          height: "500px",
+        marginTop: "100px",
         }}
       >
+        <Form.Label
+      style={{
+        fontFamily: "exo-soft",
+            color: "#CC6F57",
+            textShadow: ".05em .05em 0 hsl(200 50% 30%)",
+            fontSize: "50px",
+            marginLeft: "10px",
+      }}
+      >Sign Up
+
+      </Form.Label>
         <Row
           className="mb-3"
           style={{ marginRight: "10px", marginLeft: "10px", marginTop: "10px" }}
