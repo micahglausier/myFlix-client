@@ -1,11 +1,12 @@
 
-$body-bg: #4F6466;
+$body-bg: #e5dac6;
 $primary: #33364D;
 $title: #CC6F57;
 $font: #33364D;
-$bg-1: #e5dac6;
+$bg-1: #264653;
 $highlight: #6F9984;
 $button: #9B5143;
+
 
 .form {
     margin-top: 25px;
@@ -15,7 +16,7 @@ $button: #9B5143;
 
 @import '~bootstrap/scss/bootstrap.scss';
 
-//Title Text Shadow: "textShadow: ".05em .05em 0 hsl(200 50% 30%)",
+//Title Text Shadow: textShadow: ".05em .05em 0 hsl(200 50% 30%)",
 
 //Basic Text Shadow: textShadow: "0 13.36px 8.896px #c4b59d,0 -2px 1px #fff",
 

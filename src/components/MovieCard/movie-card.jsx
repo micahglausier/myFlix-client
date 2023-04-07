@@ -1,87 +1,75 @@
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
-import "./movie-card.scss";
-
-export const MovieCard = ({ movie, onMovieClick }) => {
+import { Link } from "react-router-dom";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+export const MovieCard = ({ movie, toggleFavorite, favoriteMovies }) => {
+  const isFavorite = favoriteMovies.includes(movie._id);
   return (
     <Card
-      className="movie-card"
-      style={{
-        cursor: "pointer",
-        marginTop: "10px",
-        border: "3px solid #9B5143",
-        boxShadow:
-          "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
-        backgroundColor: "#33364D",
-      }}
-      onClick={() => onMovieClick(movie)}
+      className="h-100"
+      style={{ backgroundColor: "#33364D", border: "2px solid #CC6F57" }}
     >
-      {/* <Card.Title
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontSize: "20px",
-          color: "#343F71",
-        }}
-      >
-        {movie.title}
-      </Card.Title> */}
-      <Card.Img
-        className="card-image"
-        variant="top"
-        src={movie.image}
-        width="300"
-        height="450"
-      />
+      <Card.Img src={movie.ImagePath} />
       <Card.Body>
+        <Card.Title
+          style={{ color: "#e5dac6", textAlign: "center", fontSize: "18px" }}
+        >
+          {movie.Title}
+        </Card.Title>
         <Card.Text
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: "13px",
-            color: "#e5dac6",
-          }}
+          style={{ color: "#e5dac6", textAlign: "center", fontSize: "15px" }}
         >
-          Directed By: {movie.director}
+          {movie.Director.Name}
         </Card.Text>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            onClick={() => onMovieClick(movie)}
-            className="open-button"
+        {!isFavorite ? (
+          <AiOutlineHeart
+            className="heart"
+            onClick={() => toggleFavorite(movie._id)}
             style={{
-              backgroundColor: "#e5dac6",
-              color: "#33364D",
-              cursor: "pointer",
-              height: "50px",
-              width: "100px",
-              boxShadow:
-                "rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset",
-              fontWeight: "600",
-              border: "2px solid #CC6F57",
+              color: "#CC6F57",
+              textAlign: "center",
+              display: "block",
+              marginRight: "auto",
+              marginLeft: "auto",
+              marginBottom: "10px",
+            }}
+          />
+        ) : (
+          <AiFillHeart
+            className="heart"
+            onClick={() => toggleFavorite(movie._id)}
+            style={{
+              color: "#CC6F57",
+              textAlign: "center",
+              display: "block",
+              marginRight: "auto",
+              marginLeft: "auto",
+              marginBottom: "10px",
+            }}
+          />
+        )}
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+          <Button
+            variant="link"
+            style={{
+              display: "block",
+              marginRight: "auto",
+              marginLeft: "auto",
+              backgroundColor: "#CC6F57",
+              marginBottom: "10px",
+              textDecoration: "none",
             }}
           >
-            View
+            Open
           </Button>
-        </div>
+        </Link>
       </Card.Body>
     </Card>
   );
 };
 
-//here is where we define all the props constraints for the MovieCard
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    director: PropTypes.string,
+    Title: PropTypes.string,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
 };
