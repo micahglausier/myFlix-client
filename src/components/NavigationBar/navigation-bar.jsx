@@ -110,3 +110,4 @@ export const NavigationBar = ({ user, onLoggedOut, onFilter }) => {
     </Navbar>
   );
 };
+
