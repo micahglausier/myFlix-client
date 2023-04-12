@@ -27232,7 +27232,7 @@ const MainView = ()=>{
         }
     };
     const addToFavorite = (movieId)=>{
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/favoriteMovies/${movieId}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/FavoriteMovies/${movieId}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -27246,7 +27246,7 @@ const MainView = ()=>{
         });
     };
     const removeFavorite = (movieId)=>{
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/favoriteMovies/${movieId}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/FavoriteMovies/${movieId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`

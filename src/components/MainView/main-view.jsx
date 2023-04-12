@@ -81,7 +81,7 @@ export const MainView = () => {
 
   const addToFavorite = (movieId) => {
     fetch(
-      `https://myflix-micah.herokuapp.com/users/${user.Username}/favoriteMovies/${movieId}`,
+      `https://myflix-micah.herokuapp.com/users/${user.Username}/FavoriteMovies/${movieId}`,
       {
         method: "POST",
         headers: {
@@ -103,7 +103,7 @@ export const MainView = () => {
   };
   const removeFavorite = (movieId) => {
     fetch(
-      `https://myflix-micah.herokuapp.com/users/${user.Username}/favoriteMovies/${movieId}`,
+      `https://myflix-micah.herokuapp.com/users/${user.Username}/FavoriteMovies/${movieId}`,
       {
         method: "DELETE",
         headers: {
