@@ -19,4 +19,6 @@ The online hosted version of this app can be found here: [favMov](https://micahf
 
 Terminal Command: `npx parcel src/index.html`
 
+Have a great time!
+
  
