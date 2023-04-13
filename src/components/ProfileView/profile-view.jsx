@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, Row, Col, Container } from "react-bootstrap";
+import { Button, Form, Row, Col } from "react-bootstrap";
 import { MovieCard } from "../MovieCard/movie-card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -29,7 +29,7 @@ export const ProfileView = ({
       Password: password,
       Birthday: birthday,
       Email: email,
-      FavoriteMovies: favoriteMovies,
+      
     };
     fetch(`https://myflix-micah.herokuapp.com/users/${user._id}`, {
       method: "PUT",
