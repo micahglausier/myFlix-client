@@ -28805,6 +28805,7 @@ const MainView = ()=>{
     ] : []);
     const [movieView, setMoviesView] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
+        console.log(storedUser);
         if (!token) return;
         fetch("https://myflix-micah.herokuapp.com/movies", {
             method: "GET",
@@ -28855,7 +28856,7 @@ const MainView = ()=>{
         }
     };
     const addToFavorite = (movieId)=>{
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/favoriteMovies/${movieId}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/FavoriteMovies/${movieId}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -28869,7 +28870,7 @@ const MainView = ()=>{
         });
     };
     const removeFavorite = (movieId)=>{
-        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/favoriteMovies/${movieId}`, {
+        fetch(`https://myflix-micah.herokuapp.com/users/${user.Username}/FavoriteMovies/${movieId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -28904,7 +28905,7 @@ const MainView = ()=>{
                 onFilter: filter
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 141,
+                lineNumber: 144,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -28923,7 +28924,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 152,
+                            lineNumber: 155,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28943,7 +28944,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 166,
+                            lineNumber: 169,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28963,7 +28964,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 185,
+                            lineNumber: 188,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -28990,7 +28991,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 201,
+                            lineNumber: 204,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -29012,24 +29013,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/MainView/main-view.jsx",
-                            lineNumber: 228,
+                            lineNumber: 231,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/MainView/main-view.jsx",
-                    lineNumber: 151,
+                    lineNumber: 154,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/MainView/main-view.jsx",
-                lineNumber: 150,
+                lineNumber: 153,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/MainView/main-view.jsx",
-        lineNumber: 140,
+        lineNumber: 143,
         columnNumber: 5
     }, undefined);
 };
@@ -60083,7 +60084,6 @@ var _react = require("react");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
-var _loginViewScss = require("./login-view.scss");
 var _s = $RefreshSig$();
 const LoginView = ({ onLogin  })=>{
     _s();
@@ -60253,7 +60253,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","prop-types":"7wKI2","./login-view.scss":"giMYT"}],"giMYT":[function() {},{}],"89st6":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","prop-types":"7wKI2"}],"89st6":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0182 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -60753,8 +60753,7 @@ const ProfileView = ({ user , deregister , token , movies , favoriteMovies , tog
             Username: username,
             Password: password,
             Birthday: birthday,
-            Email: email,
-            FavoriteMovies: favoriteMovies
+            Email: email
         };
         fetch(`https://myflix-micah.herokuapp.com/users/${user._id}`, {
             method: "PUT",

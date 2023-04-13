@@ -14,12 +14,15 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+
   const [userFavoriteMovies, setUserFavoriteMovies] = useState(
     user ? [user.FavoriteMovies] : []
   );
   const [movieView, setMoviesView] = useState([]);
 
   useEffect(() => {
+    console.log(storedUser);
+    
     if (!token) {
       return;
     }
@@ -81,7 +84,7 @@ export const MainView = () => {
 
   const addToFavorite = (movieId) => {
     fetch(
-      `https://myflix-micah.herokuapp.com/users/${user.Username}/favoriteMovies/${movieId}`,
+      `https://myflix-micah.herokuapp.com/users/${user.Username}/FavoriteMovies/${movieId}`,
       {
         method: "POST",
         headers: {
@@ -103,7 +106,7 @@ export const MainView = () => {
   };
   const removeFavorite = (movieId) => {
     fetch(
-      `https://myflix-micah.herokuapp.com/users/${user.Username}/favoriteMovies/${movieId}`,
+      `https://myflix-micah.herokuapp.com/users/${user.Username}/FavoriteMovies/${movieId}`,
       {
         method: "DELETE",
         headers: {
