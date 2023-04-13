@@ -14,12 +14,15 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+
   const [userFavoriteMovies, setUserFavoriteMovies] = useState(
     user ? [user.FavoriteMovies] : []
   );
   const [movieView, setMoviesView] = useState([]);
 
   useEffect(() => {
+    console.log(storedUser);
+    
     if (!token) {
       return;
     }

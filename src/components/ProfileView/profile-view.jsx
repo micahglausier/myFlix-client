@@ -29,7 +29,7 @@ export const ProfileView = ({
       Password: password,
       Birthday: birthday,
       Email: email,
-      FavoriteMovies: favoriteMovies,
+      
     };
     fetch(`https://myflix-micah.herokuapp.com/users/${user._id}`, {
       method: "PUT",
